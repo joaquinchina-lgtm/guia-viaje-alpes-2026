@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía 4Nations · Ginebra 2026</title>
+<style>
+  :root{
+    --ink:#1b2330; --soft:#5c6675; --line:#e6e9f0; --bg:#faf9f7; --card:#fff;
+    --accent:#1f6f5c; --accent2:#0b4a6f; --gold:#b98a34;
+    --warn:#b3401a; --warnbg:#fdf3ef; --okbg:#eef7f3; --maxw:760px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    line-height:1.75;font-size:17px;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  img{display:block}
+
+  /* ---------- NAV ---------- */
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(250,249,247,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav.top .inner{display:flex;gap:6px;overflow-x:auto;padding:10px 14px;scrollbar-width:none}
+  nav.top .inner::-webkit-scrollbar{display:none}
+  nav.top a{flex:0 0 auto;font-size:13.5px;color:var(--accent2);text-decoration:none;
+    padding:5px 12px;border:1px solid var(--line);border-radius:20px;background:#fff;white-space:nowrap}
+  nav.top a:hover{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+
+  /* ---------- COVER ---------- */
+  .cover{position:relative;min-height:82vh;display:flex;align-items:flex-end;
+    background:#0b1a24;overflow:hidden}
+  .cover img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+  .cover .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,20,30,.25),rgba(8,20,30,.85))}
+  .cover .c-in{position:relative;z-index:2;color:#fff;padding:0 22px 46px;max-width:var(--maxw);margin:0 auto;width:100%}
+  .cover .kicker{letter-spacing:3px;text-transform:uppercase;font-size:12.5px;opacity:.85;margin-bottom:10px}
+  .cover h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,8vw,60px);line-height:1.05;margin:0 0 14px}
+  .cover p{margin:4px 0;opacity:.95;font-size:15.5px}
+  .chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:7px}
+  .chips span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);
+    padding:4px 11px;border-radius:20px;font-size:13px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:8px 0 10px}
+  .chapter{border-top:1px solid var(--line);margin-top:24px;padding-top:8px}
+  .eyebrow{font-family:var(--sans);letter-spacing:2px;text-transform:uppercase;
+    font-size:12px;color:var(--gold);font-weight:700;margin:22px 0 2px}
+  h2.title{font-family:var(--serif);font-weight:600;font-size:clamp(27px,5.5vw,40px);
+    line-height:1.1;margin:2px 0 4px;color:var(--ink)}
+  .sub{color:var(--soft);font-size:15px;margin:0 0 6px}
+  h3{font-family:var(--serif);font-size:21px;font-weight:600;margin:26px 0 6px}
+  h4{font-size:15.5px;margin:16px 0 2px;color:var(--accent)}
+  p{margin:12px 0}
+  .lead{font-size:19px;color:#2c3644}
+
+  /* hero + figures */
+  figure{margin:0}
+  .hero{width:100%;height:min(56vh,520px);object-fit:cover;cursor:zoom-in;
+    border-radius:0}
+  .figwide{width:100vw;position:relative;left:50%;transform:translateX(-50%)}
+  figcaption{max-width:var(--maxw);margin:6px auto 0;padding:0 20px;color:var(--soft);
+    font-size:13px;font-style:italic}
+
+  /* meta chips */
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+  .tag{font-size:13px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:5px 11px;color:#3a4658}
+  .tag b{color:var(--ink)}
+  .tag.acc{background:#eef7f3;border-color:#cfe6dc}
+  .tag.kid{background:#eef4fb;border-color:#d3e2f2}
+  .tag.drive{background:#fbf6ee;border-color:#efe4cf}
+
+  /* history block */
+  .history{border-left:3px solid var(--gold);padding:2px 0 2px 18px;margin:18px 0;
+    background:linear-gradient(90deg,#fbf7ef,transparent 60%)}
+  .history .h-label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .srclinks{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 2px}
+  .srclinks a{font-size:13.5px;text-decoration:none;border:1px solid #e0d3b6;border-radius:20px;
+    padding:5px 13px;background:#fff;color:var(--gold);font-weight:600}
+  .srclinks a:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+  /* boxes */
+  .box{border-radius:12px;padding:14px 18px;margin:16px 0;border:1px solid var(--line);background:#fff}
+  .warn{background:var(--warnbg);border-color:#f0d3c6}
+  .warn strong{color:var(--warn)}
+  .ok{background:var(--okbg);border-color:#cfe6dc}
+
+  /* galleries */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin:18px 0}
+  .grid img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;cursor:zoom-in;
+    transition:transform .18s ease, filter .18s ease}
+  .grid img:hover{transform:scale(1.02);filter:brightness(1.05)}
+  .gcount{font-size:13px;color:var(--soft);margin:4px 0 0}
+
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#f1f4f9;color:var(--soft);font-weight:600}
+  ul.tight{margin:8px 0;padding-left:20px}
+  ul.tight li{margin:4px 0}
+  .kbd{background:#eef1f6;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:14px}
+  a{color:var(--accent2)}
+  audio{width:100%;margin:12px 0}
+  .foot{color:var(--soft);font-size:13.5px;text-align:center;margin:34px auto 48px;max-width:var(--maxw);padding:0 20px}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(9,11,15,.95);display:none;
+    align-items:center;justify-content:center}
+  .lb.open{display:flex}
+  .lb img{max-width:94vw;max-height:88vh;object-fit:contain;border-radius:4px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lb .cap{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:#e8ecf2;
+    font-size:14px;padding:0 20px}
+  .lb .counter{position:fixed;top:16px;left:0;right:0;text-align:center;color:#aab3c0;font-size:13px}
+  .lb button{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);
+    color:#fff;border:1px solid rgba(255,255,255,.25);width:52px;height:52px;border-radius:50%;
+    font-size:24px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center}
+  .lb button:hover{background:rgba(255,255,255,.24)}
+  .lb .prev{left:14px}.lb .next{right:14px}
+  .lb .close{top:14px;right:14px;left:auto;transform:none;width:44px;height:44px;font-size:20px}
+  @media(max-width:560px){.lb .prev{left:6px}.lb .next{right:6px}.lb button{width:44px;height:44px;font-size:20px}}
+
+  @media print{nav.top,.lb{display:none}.cover{min-height:auto}.figwide{width:100%;left:0;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav class="top"><div class="inner">
+  <a href="#logistica">Logística</a>
+  <a href="#planes">Tipos de plan</a>
+  <a href="#ginebra">Ginebra</a>
+  <a href="#cern">CERN</a>
+  <a href="#lausanne">Lausanne</a>
+  <a href="#chamonix">Chamonix</a>
+  <a href="#lucerna">Lucerna</a>
+  <a href="#interlaken">Interlaken</a>
+  <a href="#berna">Berna</a>
+  <a href="#zurich">Zúrich</a>
+  <a href="#turin">Turín</a>
+  <a href="#selvanegra">Selva Negra</a>
+  <a href="#cerca">Cerca de casa</a>
+  <a href="#casa">La casa</a>
+  <a href="#audio">Audio</a>
+</div></nav>
+
+<!-- ====== COVER ====== -->
+<header class="cover">
+  <img class="bg z" src="Montblanc2.jpg" alt="Portada · Alpes" data-cap="Los Alpes desde el valle de Chamonix">
+  <div class="grad"></div>
+  <div class="c-in">
+    <div class="kicker">Guía de viaje · 3 familias</div>
+    <h1>Ginebra y los Alpes</h1>
+    <p>Base: 44, rte de Saint-Jean · Prévessin-Moëns (Francia, junto a Ginebra)</p>
+    <p>6 – 16 de julio de 2026 · 9 personas · furgoneta Renault Trafic (9 plazas, tarjeta de discapacidad)</p>
+    <div class="chips">
+      <span>Ginebra &amp; CERN</span><span>Chamonix</span><span>Lucerna</span>
+      <span>Interlaken</span><span>Berna</span><span>Turín</span><span>Selva Negra</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ====== LOGÍSTICA ====== -->
+<section id="logistica">
+  <div class="eyebrow">Antes de salir</div>
+  <h2 class="title">Logística esencial</h2>
+  <p class="sub">Léelo una vez y te ahorras multas y sustos.</p>
+
+  <h3>Peajes y viñetas (furgoneta &lt; 3,5 t)</h3>
+  <table>
+    <tr><th>Concepto</th><th>2026</th><th>Notas</th></tr>
+    <tr><td>Viñeta autopista Suiza</td><td>CHF 40</td><td>Obligatoria. Cómprala online (e-vignette ligada a matrícula) antes de entrar. Sin ella, multa.</td></tr>
+    <tr><td>Túnel Mont Blanc (a Italia)</td><td>~56 € ida / ~70 € ida y vuelta</td><td>El i/v vale 7 días: sale a cuenta para Turín. Guárdalo.</td></tr>
+    <tr><td>Autopistas Francia e Italia</td><td>Peaje por tramo</td><td>Normales, en cabina o telepeaje.</td></tr>
+  </table>
+
+  <h3>La tarjeta de discapacidad, país por país</h3>
+  <ul class="tight">
+    <li><b>Suiza:</b> reconoce la tarjeta europea. Zonas azules y plazas reservadas, a menudo gratis o con tiempo ampliado. Colócala siempre visible.</li>
+    <li><b>Italia (Turín):</b> la trampa. La tarjeta da plazas reservadas, <strong>pero NO exime de la ZTL</strong> del centro (cámaras). <b>Registra la matrícula de la furgoneta</b> en el portal GTT ≥48 h antes, o da la matrícula al personal de ciertos parkings (Emanuele Filiberto, Castello, Carlo Alberto…). Si no, multa automática.</li>
+    <li><b>Francia:</b> aparcamiento gratuito y sin límite en la mayoría de plazas de pago.</li>
+  </ul>
+
+  <h3>Reservas para hacer ya</h3>
+  <ul class="tight">
+    <li><b>CERN (Science Gateway):</b> gratis; reserva online recomendada hasta 1 mes antes.</li>
+    <li><b>Cruceros por el lago (CGN) y trenes de montaña:</b> confirma plazas con antelación.</li>
+    <li><b>Museo Egipcio de Turín</b> si vais: entrada con horario.</li>
+  </ul>
+
+  <h3>Botiquín y datos médicos locales</h3>
+  <p>Lleva medicación con margen, informe médico en inglés/francés y tarjeta sanitaria europea (TSE). Consultorio de Sablons (Ferney-Voltaire): <b>04 50 40 11 11</b>. Emergencias: <b>112</b> · 15 SAMU · 18 bomberos · 17 policía.</p>
+</section>
+
+<!-- ====== TIPOS DE PLAN ====== -->
+<section id="planes" class="chapter">
+  <div class="eyebrow">Cómo organizarse</div>
+  <h2 class="title">Tipos de plan</h2>
+  <p class="sub">Los destinos por esfuerzo, sin asignar a fechas. Un solo destino ancla por día; alterna fuerte y suave.</p>
+
+  <h4>Medio día (cerca, poca conducción)</h4>
+  <table>
+    <tr><th>Plan</th><th>Coche (ida)</th></tr>
+    <tr><td>Ginebra (lago, casco viejo, Bastiones)</td><td>15 min</td></tr>
+    <tr><td>CERN · Science Gateway</td><td>10 min</td></tr>
+    <tr><td>Lausanne + Ouchy · o Annecy</td><td>45–60 min</td></tr>
+  </table>
+
+  <h4>Día completo</h4>
+  <table>
+    <tr><th>Plan</th><th>Coche (ida)</th></tr>
+    <tr><td>Chamonix + Mer de Glace</td><td>1 h 15</td></tr>
+    <tr><td>Lucerna</td><td>2 h 30</td></tr>
+    <tr><td>Interlaken + valle de Lauterbrunnen</td><td>2 h 30</td></tr>
+    <tr><td>Berna</td><td>1 h 50</td></tr>
+    <tr><td>Zúrich</td><td>2 h 50</td></tr>
+  </table>
+
+  <h4>Día largo (salida temprano)</h4>
+  <table>
+    <tr><th>Plan</th><th>Coche (ida)</th></tr>
+    <tr><td>Turín + Aosta (túnel Mont Blanc)</td><td>2 h 45–3 h</td></tr>
+    <tr><td>Selva Negra (Titisee/Friburgo)</td><td>2 h 45–3 h 30</td></tr>
+  </table>
+
+  <h4>Días suaves / cerca de casa</h4>
+  <p>Playa del Léman, teleférico del Salève, Divonne-les-Bains, Vitam parc, castillo de Voltaire, Col de la Faucille, Bains des Pâquis… (detalle en la sección «Cerca de casa»).</p>
+
+  <div class="box ok">
+    <strong>Cómo combinarlos:</strong> con tres grandes ciudades suizas (Lucerna, Berna, Zúrich) más los días largos, no cabe todo sin agotar al grupo. Elige. Orden de preferencia para la terna final: <b>Berna &gt; Selva Negra &gt; Zúrich</b>. Y no encadenes dos días fuertes seguidos.
+  </div>
+</section>
+</div><!-- /wrap -->
+
+<!-- ====== GINEBRA ====== -->
+<section id="ginebra" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Ginebra1.jpg" alt="Ginebra" data-cap="Ginebra y el lago Léman">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Medio día · 15 min</div>
+    <h2 class="title">Ginebra</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 15 min</span>
+      <span class="tag kid"><b>Niños:</b> alto (jet d'eau, helados)</span>
+    </div>
+    <p class="lead">La gran ciudad internacional a la puerta de casa: lago, montañas al fondo y un casco viejo con siglos de historia.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Ginebra nació como <em>Genava</em>, plaza de la tribu celta de los alóbroges que Julio César menciona ya en el 58 a. C. como punto clave del Ródano. Ciudad episcopal en la Edad Media, dio el salto a la historia universal en el siglo XVI: en 1536 abrazó la Reforma y, bajo Juan Calvino, se convirtió en la «Roma protestante», refugio de perseguidos de toda Europa y foco de una severa república de costumbres austeras que aún late en su carácter.</p>
+      <p>Ese ADN de refugio y neutralidad la hizo capital de causas globales. Aquí nació la Cruz Roja (1863, de la mano de Henry Dunant) y aquí se instaló la Sociedad de Naciones tras la Gran Guerra; hoy alberga la sede europea de la ONU en el Palais des Nations. Patria de Rousseau y cuna de la alta relojería, Ginebra es una ciudad pequeña que ha jugado siempre por encima de su tamaño.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Ginebra" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Ginebra%2C+Suiza" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>Paseo por la orilla hasta el <b>Jet d'Eau</b>, el <b>Jardín Inglés</b> con su reloj de flores y el <b>Parc des Bastions</b> con el Muro de la Reforma y el ajedrez gigante que encantará a los niños. El casco viejo, en alto, corona la catedral de San Pedro.</p>
+    <div class="grid">
+      <img class="z" src="Ginebra1.jpg" data-cap="Ginebra · orilla del Léman" alt="">
+      <img class="z" src="Ginebra2.jpeg" data-cap="Ginebra · casco antiguo" alt="">
+    </div>
+    <p class="gcount">Toca cualquier foto para verla a tamaño completo.</p>
+  </div>
+</section>
+
+<!-- ====== CERN ====== -->
+<section id="cern" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="CERN1.webp" alt="CERN Science Gateway" data-cap="CERN · Science Gateway (Renzo Piano)">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Medio día · 10 min</div>
+    <h2 class="title">CERN · Science Gateway</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 10 min</span>
+      <span class="tag acc"><b>Accesible:</b> 100% (ascensores, WC, silla de préstamo)</span>
+      <span class="tag kid"><b>Niños:</b> altísimo</span>
+    </div>
+    <p class="lead">Uno de los mejores planes del viaje, y gratis: el mayor laboratorio de física de partículas del mundo, hecho museo interactivo.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>El CERN se fundó en 1954 como uno de los primeros grandes proyectos comunes de una Europa que salía de la guerra: doce países decidieron reconstruir la ciencia continental uniendo fuerzas, a caballo sobre la frontera franco-suiza, en Meyrin. De sus anillos subterráneos —hoy el Gran Colisionador de Hadrones, 27 km de circunferencia— salieron hitos como el descubrimiento de los bosones W y Z y, en 2012, la confirmación del bosón de Higgs.</p>
+      <p>Aquí ocurrió además algo que usas cada día: en 1989 el ingeniero Tim Berners-Lee inventó la World Wide Web para que los físicos compartieran datos. El <b>Science Gateway</b>, obra del arquitecto Renzo Piano inaugurada en 2023, traduce todo ese universo en exposiciones que se tocan, perfectas para todas las edades.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Organizaci%C3%B3n_Europea_para_la_Investigaci%C3%B3n_Nuclear" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=CERN+Science+Gateway" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>Exposiciones interactivas, un tramo real de acelerador y espectáculos de ciencia en vivo. <strong>Reserva online</strong> hasta con un mes de antelación (también hay acceso sin reserva según disponibilidad). Combínalo con Ginebra el mismo medio día: están al lado.</p>
+    <div class="grid">
+      <img class="z" src="CERN2.jpg" data-cap="CERN" alt="">
+      <img class="z" src="CERN3.webp" data-cap="CERN" alt="">
+      <img class="z" src="CERN4.jpg" data-cap="CERN" alt="">
+      <img class="z" src="CERN5.jpg" data-cap="CERN" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== LAUSANNE ====== -->
+<section id="lausanne" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Lausanne1.jpg" alt="Lausanne" data-cap="Lausanne sobre el lago Léman">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Medio día · 45–60 min</div>
+    <h2 class="title">Lausanne + Léman</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 45–60 min</span>
+      <span class="tag acc"><b>Silla:</b> Ouchy (orilla) llano; ciudad alta con cuestas</span>
+      <span class="tag kid"><b>Niños:</b> medio-alto</span>
+    </div>
+    <p class="lead">Ciudad en terrazas sobre el lago, capital olímpica del mundo. A un paso, Annecy es la alternativa más llana y paseable.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>La Lausana romana, <em>Lousonna</em>, estaba junto al lago; en la alta Edad Media sus habitantes se refugiaron en la colina para defenderse, dando forma a la ciudad escalonada de hoy. Su catedral gótica de Notre-Dame, del siglo XIII, es una de las más bellas de Suiza, y conserva una tradición viva única: el <em>guet</em>, el vigía que aún canta las horas desde lo alto del campanario cada noche.</p>
+      <p>En 1915 Pierre de Coubertin trasladó aquí la sede del Comité Olímpico Internacional, y Lausanne es desde entonces la «capital olímpica», con su Museo Olímpico asomado al lago en Ouchy. Enfrente, al otro lado del agua, Annecy conserva su laberinto medieval de canales en torno al Palais de l'Isle, del siglo XII, y el castillo de los condes de Ginebra.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Lausana" target="_blank" rel="noopener">Wikipedia · Lausanne ↗</a>
+        <a href="https://es.wikipedia.org/wiki/Annecy" target="_blank" rel="noopener">Wikipedia · Annecy ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Lausana%2C+Suiza" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>Concéntrate en <b>Ouchy</b> y su paseo lacustre, con el <b>Museo Olímpico</b> y sus jardines. Como alternativa, <b>Annecy</b> (45 min): canales, casco medieval y lago cristalino.</p>
+    <div class="grid">
+      <img class="z" src="Lausanne2.webp" data-cap="Lausanne · Ouchy" alt="">
+      <img class="z" src="Annecy.jpg" data-cap="Annecy · la Venecia de los Alpes" alt="">
+      <img class="z" src="Caux1.png" data-cap="Caux, sobre Montreux" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== CHAMONIX ====== -->
+<section id="chamonix" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Chamonix1.webp" alt="Chamonix" data-cap="Chamonix, al pie del Mont Blanc">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Día completo · 1 h 15</div>
+    <h2 class="title">Chamonix + Mont Blanc</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 1 h 15</span>
+      <span class="tag kid"><b>Niños:</b> altísimo (trenes, glaciar, teleféricos)</span>
+    </div>
+    <p class="lead">El día alpino más fácil desde la base: un pueblo mítico bajo el techo de los Alpes, cuna del alpinismo y de los Juegos de Invierno.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Hasta el siglo XVIII, el valle de Chamonix era un rincón pobre y aislado de los Alpes. Todo cambió en 1741, cuando dos viajeros ingleses, Windham y Pococke, «descubrieron» para el turismo el Mar de Hielo y difundieron por Europa la fascinación por estas montañas. En 1786 Jacques Balmat y el doctor Michel Paccard alcanzaron por primera vez la cima del Mont Blanc (4.808 m): aquel ascenso está considerado el acta de nacimiento del alpinismo moderno.</p>
+      <p>Desde entonces, Chamonix vive mirando a la cumbre. Acogió los primeros Juegos Olímpicos de Invierno de la historia, en 1924, y encadenó proezas de ingeniería para acercar a todos la alta montaña: el tren de Montenvers hasta el Mar de Hielo (1908) y el teleférico de la Aiguille du Midi (1955), en su día el más alto del mundo.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Chamonix-Mont-Blanc" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Chamonix-Mont-Blanc" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Las dos grandes subidas</h3>
+    <h4>Mer de Glace (1.913 m)</h4>
+    <p>El tren cremallera de <b>Montenvers</b> sube al mayor glaciar de Francia, con vistas enormes y una gruta excavada en el hielo. Media altura, muy panorámico: el clásico imprescindible del valle.</p>
+    <h4>Aiguille du Midi (3.842 m)</h4>
+    <p>El teleférico asciende en 20 minutos a casi 4.000 m, con miradores vertiginosos y el famoso «paso al vacío» de suelo de cristal. Arriba hace frío y el aire es fino; una experiencia de alta montaña en estado puro.</p>
+    <div class="grid">
+      <img class="z" src="MontBlanc1.jpg" data-cap="Macizo del Mont Blanc" alt="">
+      <img class="z" src="Montblanc2.jpg" data-cap="Mont Blanc desde el valle" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== LUCERNA ====== -->
+<section id="lucerna" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Lucerna1.jpg" alt="Lucerna" data-cap="Lucerna y el puente de la Capilla">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Día completo · 2 h 30</div>
+    <h2 class="title">Lucerna</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 2 h 30</span>
+      <span class="tag kid"><b>Niños:</b> alto (barcos, cisnes)</span>
+    </div>
+    <p class="lead">La estampa suiza de postal: un lago de montaña, puentes de madera medievales y un casco antiguo compacto y llano.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Lucerna creció en torno a un monasterio benedictino en el siglo VIII, pero su fortuna llegó con la apertura de la ruta comercial del San Gotardo hacia 1220, que la convirtió en puerta entre el norte y el sur de Europa. En 1332 fue la cuarta ciudad en unirse a la Confederación Helvética, un paso decisivo en el nacimiento de Suiza.</p>
+      <p>De aquella época dorada sobrevive el <b>Kapellbrücke</b> (1333), el puente de madera cubierto más antiguo de Europa, con sus tablas pintadas bajo el tejado; un incendio lo devastó en 1993 y fue reconstruido con mimo. Cerca, el <b>León moribundo</b>, tallado en la roca en 1820-21 en memoria de los guardias suizos caídos en 1792, es —en palabras de Mark Twain— «el trozo de piedra más triste y conmovedor del mundo».</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Lucerna" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Lucerna%2C+Suiza" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>El <b>puente de la Capilla</b>, la <b>Löwenplatz</b> y el <b>León moribundo</b>, y un <b>crucero por el lago de los Cuatro Cantones</b> entre montañas: probablemente el mejor plan del día.</p>
+    <div class="grid">
+      <img class="z" src="Lucerna2.jpg" data-cap="Lucerna" alt="">
+      <img class="z" src="Lucerna3.jpg" data-cap="Lucerna" alt="">
+      <img class="z" src="Lucerna4.jpg" data-cap="Lucerna" alt="">
+      <img class="z" src="Lucerna5.jpg" data-cap="Lucerna · lago de los Cuatro Cantones" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== INTERLAKEN ====== -->
+<section id="interlaken" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Lauterbrünen1.jpg" alt="Valle de Lauterbrunnen" data-cap="Valle de Lauterbrunnen">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Día completo · 2 h 30</div>
+    <h2 class="title">Interlaken + Lauterbrunnen</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 2 h 30</span>
+      <span class="tag kid"><b>Niños:</b> altísimo (cascadas de cuento)</span>
+    </div>
+    <p class="lead">El corazón de los Alpes berneses: dos lagos turquesa, un valle con 72 cascadas y las cumbres del Eiger, el Mönch y el Jungfrau.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Interlaken —literalmente «entre lagos», el de Thun y el de Brienz— creció alrededor de un monasterio agustino fundado hacia 1130. Su gran momento llegó en el siglo XIX, cuando los viajeros del Romanticismo, deslumbrados por la pared del Jungfrau, la convirtieron en una de las primeras estaciones turísticas de los Alpes; en 1912 el ferrocarril del Jungfrau alcanzó la estación de tren más alta de Europa.</p>
+      <p>El vecino valle de <b>Lauterbrunnen</b> («muchas fuentes») es pura leyenda: sus paredes verticales y sus cascadas colgantes inspiraron a Goethe un poema sobre la cascada del Staubbach en 1779 y, según la tradición, sirvieron de modelo a Tolkien para imaginar el Rivendel de <em>El Señor de los Anillos</em>.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Interlaken" target="_blank" rel="noopener">Wikipedia · Interlaken ↗</a>
+        <a href="https://es.wikipedia.org/wiki/Lauterbrunnen" target="_blank" rel="noopener">Wikipedia · Lauterbrunnen ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Lauterbrunnen" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>El paseo llano del <b>Höheweg</b> en Interlaken, con vistas al Jungfrau, y sobre todo el fondo del <b>valle de Lauterbrunnen</b>, con la <b>cascada del Staubbach</b> descolgándose casi 300 m junto al pueblo. Grindelwald, al lado, completa el paisaje.</p>
+    <div class="grid">
+      <img class="z" src="Lauterbrünen2.jpg" data-cap="Lauterbrunnen" alt="">
+      <img class="z" src="Lauterbrünen3.webp" data-cap="Lauterbrunnen" alt="">
+      <img class="z" src="Grindelwald1.jpg" data-cap="Grindelwald" alt="">
+      <img class="z" src="Grindewald2.avif" data-cap="Grindelwald" alt="">
+      <img class="z" src="Grindelwald3.jpeg" data-cap="Grindelwald" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== BERNA ====== -->
+<section id="berna" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Berna1.jpg" alt="Berna" data-cap="Berna · casco antiguo Patrimonio de la Humanidad">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Día completo · 1 h 50</div>
+    <h2 class="title">Berna</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 1 h 50</span>
+      <span class="tag acc"><b>Silla:</b> media-alta (casco llano, con soportales)</span>
+      <span class="tag kid"><b>Niños:</b> medio-alto (foso de los osos)</span>
+    </div>
+    <p class="lead">La capital suiza, y la joya más cercana del trío final: un casco medieval intacto abrazado por un meandro del río Aar.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Berna fue fundada en 1191 por el duque Bertoldo V de Zähringen sobre una península defendida por el río. La leyenda dice que la bautizó con el nombre del primer animal que cazó, un oso (<em>Bär</em>), que desde entonces es su símbolo y da nombre al foso de los osos junto al río. Reconstruida en piedra arenisca tras el incendio de 1405, su casco antiguo llegó tan íntegro al presente que la UNESCO lo declaró Patrimonio de la Humanidad en 1983.</p>
+      <p>Capital federal de Suiza desde 1848, Berna guarda también un capítulo científico célebre: en un modesto piso de la Kramgasse vivió Albert Einstein mientras trabajaba en la oficina de patentes, y allí, en su «año milagroso» de 1905, formuló la teoría de la relatividad especial.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Berna" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Berna%2C+Suiza" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>La torre del reloj <b>Zytglogge</b> y su carrillón, seis kilómetros de soportales cubiertos, las fuentes pintadas, el <b>Parque de los Osos</b> junto al Aar y las vistas desde el <b>Rosengarten</b> (se llega en coche).</p>
+    <div class="grid">
+      <img class="z" src="Berna2.png" data-cap="Berna" alt="">
+      <img class="z" src="Berna3.jpg" data-cap="Berna" alt="">
+      <img class="z" src="Berna4.jpg" data-cap="Berna" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== ZÚRICH ====== -->
+<section id="zurich" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Zurich1.jpg" alt="Zúrich" data-cap="Zúrich · el río Limmat">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Día completo · 2 h 50</div>
+    <h2 class="title">Zúrich</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 2 h 50</span>
+      <span class="tag acc"><b>Silla:</b> media (orilla llana; casco viejo con cuestas)</span>
+      <span class="tag kid"><b>Niños:</b> medio</span>
+    </div>
+    <p class="lead">Elegante y vibrante a orillas de su lago y del Limmat. Es la opción más lejana del trío final: solo si hay ilusión especial.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Zúrich nació como <em>Turicum</em>, un puesto aduanero romano en el punto donde el río Limmat sale del lago. Ciudad libre imperial y próspera por el comercio de la seda, se unió a la Confederación en 1351. En 1519, desde el púlpito del Grossmünster, el reformador Huldrych Zwingli encendió la Reforma en la Suiza de habla alemana, más radical y austera aún que la de Ginebra.</p>
+      <p>En los siglos XIX y XX, Zúrich se transformó en el motor financiero e industrial del país. Y en plena Primera Guerra Mundial fue también refugio de vanguardias: en el Cabaret Voltaire, en 1916, un grupo de artistas exiliados fundó el movimiento Dadá. Hoy es una de las capitales bancarias del mundo y de las ciudades con mejor calidad de vida.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Z%C3%BArich" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Z%C3%BArich" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>El paseo por el lago y el río, la <b>Bahnhofstrasse</b>, las torres del Grossmünster y el casco viejo del Niederdorf (callejuelas empinadas). En verano, las orillas se llenan de baños urbanos.</p>
+    <div class="grid">
+      <img class="z" src="Zurich2.avif" data-cap="Zúrich" alt="">
+      <img class="z" src="Zurich3.jpg" data-cap="Zúrich" alt="">
+      <img class="z" src="Zurich4.jpeg" data-cap="Zúrich" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== TURÍN ====== -->
+<section id="turin" class="chapter">
+  <figure class="figwide">
+    <img class="hero z" src="Turin1.jpg" alt="Turín" data-cap="Turín · la Mole Antonelliana">
+  </figure>
+  <div class="wrap">
+    <div class="eyebrow">Día largo · 2 h 45–3 h · Italia</div>
+    <h2 class="title">Turín + Aosta</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 2 h 45–3 h (túnel Mont Blanc)</span>
+      <span class="tag acc"><b>Silla:</b> alta (Turín es muy llano, con soportales)</span>
+      <span class="tag kid"><b>Niños:</b> medio-alto (Museo Egipcio, Mole)</span>
+    </div>
+    <p class="lead">El día más ambicioso y más agradecido: una capital barroca de elegancia real, en bucle por el túnel del Mont Blanc y el valle de Aosta.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Turín fue la romana <em>Augusta Taurinorum</em>, y su retícula de calles en ángulo recto todavía delata aquel plano militar. Su gran época empezó en 1563, cuando la Casa de Saboya la eligió capital de su ducado y, más tarde, del reino de Cerdeña; arquitectos como Guarini y Juvarra la vistieron de palacios y plazas barrocas. En 1861 fue la primera capital de la Italia unificada: aquí se cocinó el Risorgimento.</p>
+      <p>En su catedral se custodia la Sábana Santa, y a las afueras la fábrica FIAT, fundada en 1899, convirtió a Turín en el motor industrial de Italia y en su capital del automóvil. A la ida o a la vuelta, <b>Aosta</b> —la <em>Augusta Praetoria</em> fundada en el 25 a. C.— merece una parada: llamada «la Roma de los Alpes», conserva un arco, una puerta y un teatro romanos al pie del Mont Blanc.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Tur%C3%ADn" target="_blank" rel="noopener">Wikipedia · Turín ↗</a>
+        <a href="https://es.wikipedia.org/wiki/Aosta" target="_blank" rel="noopener">Wikipedia · Aosta ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Tur%C3%ADn%2C+Italia" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <div class="box warn">
+      <strong>ZTL de Turín — no falles esto.</strong>
+      <p>El centro tiene zona de tráfico limitado con cámaras. <b>Registra la matrícula de la furgoneta</b> en el portal GTT ≥48 h antes, o entra a un parking del centro (Emanuele Filiberto, Castello, Carlo Alberto…) y da la matrícula al personal. Si no, multa automática por correo.</p>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p><b>Museo Egipcio</b> (el segundo del mundo tras El Cairo), <b>Piazza Castello</b>, la <b>Mole Antonelliana</b> y sus kilómetros de soportales. Y una parada romana en <b>Aosta</b>.</p>
+    <div class="grid">
+      <img class="z" src="Turín2.jpg" data-cap="Turín" alt="">
+      <img class="z" src="Aosta1.jpg" data-cap="Aosta · la Roma de los Alpes" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ====== SELVA NEGRA ====== -->
+<section id="selvanegra" class="chapter">
+  <div class="wrap">
+    <div class="eyebrow">Día largo · 2 h 45–3 h 30 · Alemania</div>
+    <h2 class="title">Selva Negra</h2>
+    <div class="meta">
+      <span class="tag drive"><b>Coche:</b> 2 h 45–3 h 30</span>
+      <span class="tag kid"><b>Niños:</b> medio-alto (lago, relojes de cuco)</span>
+    </div>
+    <p class="lead">El bosque de los cuentos alemanes. Es el destino menos rentable teniendo los Alpes al lado, pero tiene su magia.</p>
+
+    <div class="history">
+      <div class="h-label">Historia</div>
+      <p>Los romanos llamaron <em>Silva Nigra</em> a esta masa de abetos tan densa que apenas dejaba pasar la luz. Durante siglos fue tierra de leñadores, mineros y leyendas, y de ese imaginario oscuro bebieron los hermanos Grimm para muchos de sus cuentos. Del ingenio de sus artesanos nacieron dos íconos que dieron la vuelta al mundo: el reloj de cuco, perfeccionado aquí en el siglo XVIII, y la tarta Selva Negra de guinda y kirsch.</p>
+      <p>En el siglo XIX, sus aguas termales convirtieron a ciudades como Baden-Baden en balnearios de la aristocracia europea. Hoy el corazón turístico está en torno al lago glaciar de <b>Titisee</b> y a la coqueta ciudad universitaria de <b>Friburgo</b>, con su catedral gótica y sus canalillos (<em>Bächle</em>) por las calles.</p>
+      <div class="srclinks">
+        <a href="https://es.wikipedia.org/wiki/Selva_Negra" target="_blank" rel="noopener">Wikipedia ↗</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Titisee%2C+Selva+Negra" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <h3>Qué ver</h3>
+    <p>Base en <b>Titisee</b> (lago llano, barcas, tiendas de relojes de cuco) y, si da el día, el casco de <b>Friburgo</b>. Buen plan de reserva; no por delante de Berna.</p>
+    <p class="gcount">Sin fotos en la carpeta; se añaden si finalmente lo elegís.</p>
+  </div>
+</section>
+
+<div class="wrap">
+<!-- ====== CERCA DE CASA ====== -->
+<section id="cerca" class="chapter">
+  <div class="eyebrow">Días suaves</div>
+  <h2 class="title">Cerca de casa</h2>
+  <p class="sub">Del manual de la casa y del entorno. Ideales para intercalar entre excursiones fuertes y para cuidar del gato y las plantas sin agobios.</p>
+  <table>
+    <tr><th>Plan</th><th>Qué es</th><th>Coche</th></tr>
+    <tr><td>Jet d'eau + Bastiones (Ginebra)</td><td>Paseo de orilla, ajedrez gigante</td><td>15 min</td></tr>
+    <tr><td>Playa de Port Choiseul (Versoix)</td><td>Baño en el Léman</td><td>15 min</td></tr>
+    <tr><td>Divonne-les-Bains</td><td>Lago, casino, termas, golf</td><td>15 min</td></tr>
+    <tr><td>Teleférico del Salève</td><td>Vistas de Ginebra desde arriba</td><td>25 min</td></tr>
+    <tr><td>Vitam parc (Neydens)</td><td>Gran centro acuático</td><td>25 min</td></tr>
+    <tr><td>Castillo de Voltaire (Ferney)</td><td>Historia + jardines llanos</td><td>10 min</td></tr>
+    <tr><td>Col de la Faucille</td><td>Trineo de verano, tirolinas, paseos</td><td>25 min</td></tr>
+    <tr><td>Bains des Pâquis (Ginebra)</td><td>Baño urbano icónico</td><td>15 min</td></tr>
+  </table>
+</section>
+
+<!-- ====== CASA ====== -->
+<section id="casa" class="chapter">
+  <div class="eyebrow">Vuestra base</div>
+  <h2 class="title">La casa</h2>
+  <p class="sub">Resumen en español del <em>Livret d'accueil</em>. Contactos y claves, arriba del todo.</p>
+
+  <div class="box ok">
+    <h4>Datos rápidos</h4>
+    <ul class="tight">
+      <li><b>Dirección:</b> 44, route de Saint-Jean, 01280 Prévessin-Moëns (Francia)</li>
+      <li><b>WiFi:</b> red <span class="kbd">freebox_IPFFI</span> · clave <span class="kbd">PORTEDESALPES123</span></li>
+      <li><b>Anfitriones:</b> Matthieu +33 6 77 09 75 30 (WhatsApp) · matthieu.vuillet@gmail.com · Roselyne +33 7 69 25 89 15</li>
+      <li><b>Llaves:</b> en el buzón. Una abre la puerta común (ciérrala siempre), otra la casa. <b>Al marchar: llaves al buzón a nombre de VUILLET y DETURCHE.</b></li>
+      <li><b>Netflix TV:</b> mando negro → Freebox TV; código Netflix perfil «tf1 mrh»: 4205</li>
+    </ul>
+  </div>
+
+  <h3>Aparcamiento</h3>
+  <p>Solo <b>una plaza</b> asignada, delante del garaje. Las demás son de otros vecinos. El garaje se abre con un interruptor a la izquierda de la puerta, por dentro.</p>
+
+  <h3>Cocina y electrodomésticos</h3>
+  <ul class="tight">
+    <li><b>Vitrocerámica:</b> solo con menaje magnético (en los cajones). Encender → zona → potencia 1–9. Limpiar en frío con esponja húmeda (lado amarillo).</li>
+    <li><b>Lavavajillas:</b> pastilla (bajo el fregadero) → botón redondo izquierdo (encender) → derecho (arranca, ~2 h).</li>
+    <li><b>Basura:</b> bolsas bajo el fregadero; contenedor común en la sala común (puerta blanca del vestíbulo), con reciclaje.</li>
+    <li><b>Plancha eléctrica</b> en la caseta del jardín; límpiala en caliente tras usarla.</li>
+    <li><b>Cuadro eléctrico</b> en la entrada. <b>Calefacción</b> central con válvulas por estancia.</li>
+  </ul>
+
+  <h3>Contra el calor</h3>
+  <p>Cerrad las ventanas <b>a primera hora (desde las 9:00)</b> para conservar el fresco. Al salir todo el día, dejad las de arriba abiertas.</p>
+
+  <h3>Tornade (el gato) y las plantas</h3>
+  <div class="box">
+    <p><b>Tornade</b> es el gato de la casa, muy cariñoso. A diario, rellenad su cuenco de <b>agua y pienso</b> (hay saco para toda la estancia). De noche no siempre duerme dentro: dejadle una ventana baja o corredera entreabierta. Al salir, dejad una ventana de la planta baja abierta para que entre y salga.</p>
+    <p><b>Riego:</b> según el calor, regad las plantas de terrazas, alféizares e interior cada 1–2 días (las suculentas, poco, 1 vez/semana). Manguera y grifo exterior junto al salón de verano; cerrad siempre el agua después.</p>
+  </div>
+
+  <h3>Compras, médicos y emergencias</h3>
+  <ul class="tight">
+    <li><b>Compra:</b> Leclerc (Ferney, 3,8 km), Carrefour Market (Ferney, 2,1 km), Carrefour Ségny (4,6 km). Comercios locales en Chemin de l'Église.</li>
+    <li><b>Médicos:</b> consultorio de Sablons, 13 Chemin du Levant, Ferney — <b>04 50 40 11 11</b>.</li>
+    <li><b>Emergencias:</b> 112 · 15 SAMU · 18 bomberos · 17 policía. Extintor en el rellano común.</li>
+  </ul>
+
+  <h3>Fotos de la casa</h3>
+  <p class="gcount">21 fotos · toca cualquiera para verla a tamaño completo.</p>
+  <div class="grid">
+    <img class="z" src="casa1.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa2.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa3.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa4.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa5.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa6.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa7.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa8.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa9.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa10.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa11.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa12.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa13.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa14.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa15.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa16.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa17.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa18.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa19.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa20.jpg" data-cap="La casa" alt="">
+    <img class="z" src="casa21.jpg" data-cap="La casa" alt="">
+  </div>
+</section>
+
+<!-- ====== AUDIO ====== -->
+<section id="audio" class="chapter">
+  <div class="eyebrow">Manual en audio</div>
+  <h2 class="title">Gases, gatos y el estropajo amarillo</h2>
+  <p class="sub">El manual de la casa, en audio. Mantén el archivo <em>.m4a</em> en la misma carpeta que esta guía.</p>
+  <audio controls preload="none" src="Gases_gatos_y_el_estropajo_amarillo_web.m4a">
+    Tu navegador no puede reproducir el audio. Abre el archivo
+    <a href="Gases_gatos_y_el_estropajo_amarillo_web.m4a">Gases_gatos_y_el_estropajo_amarillo_web.m4a</a> directamente.
+  </audio>
+</section>
+</div><!-- /wrap -->
+
+<p class="foot">Guía 4Nations · Ginebra 6–16 julio 2026 · documento de trabajo.<br>
+Para verla en el móvil o compartirla, mantén este archivo junto a las fotos y el audio en la misma carpeta.</p>
+
+<!-- ====== LIGHTBOX ====== -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="counter" id="lbCount"></div>
+  <button class="close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="next" id="lbNext" aria-label="Siguiente">›</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+(function(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('img.z'));
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lbImg'),
+      lbCap = document.getElementById('lbCap'),
+      lbCount = document.getElementById('lbCount'),
+      i = 0;
+  function show(n){
+    i = (n + imgs.length) % imgs.length;
+    var src = imgs[i].getAttribute('src');
+    var cap = imgs[i].getAttribute('data-cap') || imgs[i].getAttribute('alt') || '';
+    lbImg.src = src; lbImg.alt = cap;
+    lbCap.textContent = cap;
+    lbCount.textContent = (i+1) + ' / ' + imgs.length;
+  }
+  function open(n){ show(n); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
+  imgs.forEach(function(im, n){ im.addEventListener('click', function(){ open(n); }); });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); show(i+1); });
+  document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); show(i-1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb || e.target===lbImg) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    else if(e.key==='ArrowRight') show(i+1);
+    else if(e.key==='ArrowLeft') show(i-1);
+  });
+  // swipe
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX - x0;
+    if(Math.abs(dx)>45){ show(dx<0 ? i+1 : i-1); }
+    x0=null;
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
